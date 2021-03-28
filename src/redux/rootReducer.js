@@ -3,5 +3,7 @@ import {postsReducer} from "./postsReducer";
 
 export  const rootReducer = combineReducers({
     posts : postsReducer,
-    fetchedPosts : postsReducer
+    fetchedPosts : postsReducer,
+    users : postsReducer,
+    comments : postsReducer
 })

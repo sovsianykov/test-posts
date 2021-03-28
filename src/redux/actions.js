@@ -1,9 +1,9 @@
-import {CREATE_POST, FETCH_POSTS} from "./types";
+import {UPDATE_POST, FETCH_POSTS, FETCH_USERS, FETCH_COMMENTS} from "./types";
 
 export function createPost(post) {
     return (
         {
-            type: CREATE_POST,
+            type: UPDATE_POST,
             payload: post
 
         })
@@ -16,6 +16,15 @@ export function fetchPosts( ) {
               .then(response => response.json())
             dispatch({type: FETCH_POSTS, payload : response})
             console.log(response)
+            const response1 = await fetch('https://jsonplaceholder.typicode.com/users')
+                .then(response => response.json())
+            dispatch({type: FETCH_USERS, payload : response})
+            console.log(response1)
+            const response2 = await fetch('https://jsonplaceholder.typicode.com/comments')
+                .then(response => response.json())
+            dispatch({type: FETCH_COMMENTS, payload : response})
+            console.log(response2)
+
 
 
 
