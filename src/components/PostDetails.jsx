@@ -42,7 +42,7 @@ const useStyles =makeStyles({
 
 
 
-const  PostDetails = ({post}) =>{
+const  PostDetails = ({post, user , comments}) =>{
     const classes = useStyles()
 
 
@@ -53,7 +53,7 @@ const  PostDetails = ({post}) =>{
                     <Paper className={classes.root}>
 
                         <Typography variant='h6'  className={classes.text} align='right' >
-                            <span className={classes.span}>user : {post.userId}</span> <EditIcon/>
+                            <span className={classes.span}>user : {user.name}</span> <EditIcon/>
                         </Typography>
                         <Typography variant='subtitle2'  className={classes.text} >
 

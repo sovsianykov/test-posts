@@ -5,6 +5,7 @@
    import {makeStyles} from "@material-ui/core";
    import {useDispatch, useSelector} from "react-redux";
    import { fetchPosts } from "../redux/actions";
+   import PostDetails from "./PostDetails";
 
    const useStyles =makeStyles({
        root : {
@@ -44,10 +45,16 @@
            bottom : 10,
            left : 10
        },
+       detailsHolder : {
+           width : 500,
+           position : "absolute",
+           top: 80,
+           left : 10
+       },
 
 
    })
-const PostCard = ({ post,users }) => {
+const PostCard = ({ post,user }) => {
     const classes = useStyles()
 
     const comments = useSelector(state =>
@@ -61,19 +68,16 @@ const PostCard = ({ post,users }) => {
             <Paper className={classes.root}>
 
                 <Typography variant='h6'  className={classes.text} align='right' >
-                    <span className={classes.span}>user : </span>
+                    <span className={classes.span}>username : {user.username}  </span>
                     <EditIcon/>
                 </Typography>
                 <Typography variant='subtitle2'  className={classes.text} >
-
                 </Typography>
                 <Typography variant='h4' className={classes.title} align='center'>
                        {post.title}
                 </Typography>
                 <Typography variant='body1' align='center'>
                 </Typography>
-                 <Button variant='outlined' color='default' className={classes.readMoreBtn}>
-                     read more</Button>
             </Paper>
         </div>
     )

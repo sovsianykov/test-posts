@@ -12,6 +12,11 @@ import { fetchComments } from "../redux/actions";
 
 export default ( ) => {
     const dispatch = useDispatch()
+    const update = () =>{
+        dispatch(fetchPosts())
+        dispatch(fetchUsers())
+        dispatch(fetchComments())
+    }
    const posts = useSelector(state =>
        state.posts.fetchedPosts
    )
@@ -19,15 +24,13 @@ export default ( ) => {
         state.users.fetchedUsers
     )
 
-    if (users.isNaN) {
-      let  users = []
-    }
+
 
 
 
     if (!posts.length) {
-        return <Button style={{ marginTop : ' 20px'}} onClick={() => dispatch(fetchPosts())} variant='contained' color='primary' >Download posts</Button>
+        return <Button style={{ marginTop : ' 20px'}} onClick={update} variant='contained' color='primary' >Download posts</Button>
     }
-    return posts.map((el,i) =><PostCard  post = {el} key = {el.id}  users={users}  />)
+    return posts.map((el,i) =><PostCard  post = {el} key = {el.id}  user={users[el.userId -1]}  />)
 }
 
