@@ -31,9 +31,6 @@ function App() {
                      </div>
                  </Grid>
          </Grid>
-
-
-
       </main>
   );
 }

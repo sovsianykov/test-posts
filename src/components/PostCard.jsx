@@ -1,8 +1,11 @@
-   import React from "react";
+   import React, {useEffect} from "react";
    import {Typography, Paper, Button} from "@material-ui/core";
    import ContactMailOutlinedIcon from '@material-ui/icons/ContactMailOutlined';
    import EditIcon from '@material-ui/icons/Edit';
    import {makeStyles} from "@material-ui/core";
+   import {useDispatch, useSelector} from "react-redux";
+   import { fetchPosts } from "../redux/actions";
+
    const useStyles =makeStyles({
        root : {
            width: "600px",
@@ -44,8 +47,13 @@
 
 
    })
-const PostCard = ({ post }) => {
+const PostCard = ({ post,users }) => {
     const classes = useStyles()
+
+    const comments = useSelector(state =>
+        state.comments.fetchedPosts
+    )
+
 
 
     return (
@@ -53,7 +61,7 @@ const PostCard = ({ post }) => {
             <Paper className={classes.root}>
 
                 <Typography variant='h6'  className={classes.text} align='right' >
-                    {/*<span className={classes.span}>user : {post.userId}</span>*/}
+                    <span className={classes.span}>user : </span>
                     <EditIcon/>
                 </Typography>
                 <Typography variant='subtitle2'  className={classes.text} >
